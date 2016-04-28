@@ -6,10 +6,10 @@
 3. AndroidStudio Python Community Edition Plugin 설치
 
 ### 참조 사이트
- ** 아래 사이트 기반으로 제작함
- ** http://tiii.tistory.com/22
- ** 잔디(JANDI) https://tosslab.github.io/android/2016/02/12/Android-and-automation/
+1. 아래 사이트 기반으로 제작함
+2. http://tiii.tistory.com/22
+3. 잔디(JANDI) https://tosslab.github.io/android/2016/02/12/Android-and-automation/
 
 ### HISTORY
-** 2016-04-28 최초 작성
+1. 2016-04-28 최초 작성
 
