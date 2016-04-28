@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.wtwoo.autoresource"
+        minSdkVersion 22
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+}
+
+
+
+
+ext.download_res_folder = 'src/main/res_wtwoo' //저장될 별도의 리소스 폴더
+ext.script_path = 'script/languageResource.py' //스크립트 저장 경로
+ext.GoogleDocId = '1XnOlCR6IBIxyHBD6l6uT0zkGACrQtim6nynJvbkbOX0#gid=0'
+
+task StringResourceSync(type: Exec) {
+    doFirst {
+        println ":::" + "Start to get String Resources..." + ":::"
+    }
+    commandLine = ['cmd', '/c', 'python' , script_path, GoogleDocId, 2, 3, download_res_folder]
+    //mac
+    //commandLine =['python', script_path, GoogleDocId, 2, 3, download_res_folder]
+    doLast {
+        println ":::" + "Finish to get String Resources..." + ":::"
+    }
+}
+
+//preBuild.dependsOn StringResourceSync
+
+android {
+    sourceSets {
+        main.res.srcDirs += download_res_folder
+    }
+}
